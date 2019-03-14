@@ -1,3 +1,11 @@
 C:\Users\abdelkhalek.elomari\Documents\GitHub\applicationGIT\GSB\GSB\bin\Debug\GSB.exe.config
 C:\Users\abdelkhalek.elomari\Documents\GitHub\GSB\GSB\bin\Debug\GSB.exe.config
 C:\Users\pierrick.maria\Documents\GitHub\GSB\GSB\bin\Debug\GSB.exe.config
+C:\Users\abdelkhalek.elomari\Documents\GitHub\GSB\GSB\bin\Debug\GSB.exe
+C:\Users\abdelkhalek.elomari\Documents\GitHub\GSB\GSB\bin\Debug\GSB.pdb
+C:\Users\abdelkhalek.elomari\Documents\GitHub\GSB\GSB\obj\Debug\GSB.csprojResolveAssemblyReference.cache
+C:\Users\abdelkhalek.elomari\Documents\GitHub\GSB\GSB\obj\Debug\GSB.Form1.resources
+C:\Users\abdelkhalek.elomari\Documents\GitHub\GSB\GSB\obj\Debug\GSB.Properties.Resources.resources
+C:\Users\abdelkhalek.elomari\Documents\GitHub\GSB\GSB\obj\Debug\GSB.csproj.GenerateResource.Cache
+C:\Users\abdelkhalek.elomari\Documents\GitHub\GSB\GSB\obj\Debug\GSB.exe
+C:\Users\abdelkhalek.elomari\Documents\GitHub\GSB\GSB\obj\Debug\GSB.pdb
