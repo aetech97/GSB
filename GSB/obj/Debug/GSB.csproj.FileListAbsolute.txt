@@ -1,2 +1,3 @@
 C:\Users\abdelkhalek.elomari\Documents\GitHub\applicationGIT\GSB\GSB\bin\Debug\GSB.exe.config
 C:\Users\abdelkhalek.elomari\Documents\GitHub\GSB\GSB\bin\Debug\GSB.exe.config
+C:\Users\pierrick.maria\Documents\GitHub\GSB\GSB\bin\Debug\GSB.exe.config
