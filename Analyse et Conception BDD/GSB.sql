@@ -1,0 +1,248 @@
+/*
+ ----------------------------------------------------------------------------
+             Génération d'une base de données pour
+                        SQL Server 7.x
+                       (14/3/2019 13:46:05)
+ ----------------------------------------------------------------------------
+     Nom de la base : GSB
+     Projet : Accueil Win'Design version 12  original
+     Auteur : LMC
+     Date de dernière modification : 14/3/2019 13:45:43
+ ----------------------------------------------------------------------------
+*/
+
+drop database GSB
+go
+
+/* -----------------------------------------------------------------------------
+      OUVERTURE DE LA BASE GSB
+----------------------------------------------------------------------------- */
+
+create database GSB
+go
+
+use GSB
+go
+
+
+
+/* -----------------------------------------------------------------------------
+      TABLE : UTILISATEUR
+----------------------------------------------------------------------------- */
+
+create table UTILISATEUR
+  (
+     ID bigint  not null  ,
+     PSEUDO char(15)  null  ,
+     MOT_DE_PASSE char(15)  null  ,
+     ROLE char(15)  null  
+     ,
+     constraint PK_UTILISATEUR primary key (ID)
+  ) 
+go
+
+
+
+/* -----------------------------------------------------------------------------
+      TABLE : ENTREPRISE
+----------------------------------------------------------------------------- */
+
+create table ENTREPRISE
+  (
+     CODEE char(15)  not null  ,
+     NOM char(15)  null  ,
+     ADRESSE_MAIL char(20)  null  ,
+     VILLE char(30)  null  ,
+     CP char(5)  null  ,
+     ADRESSE_RUE char(30)  null  
+     ,
+     constraint PK_ENTREPRISE primary key (CODEE)
+  ) 
+go
+
+
+
+/* -----------------------------------------------------------------------------
+      TABLE : TYPE_DE_CONTROLE
+----------------------------------------------------------------------------- */
+
+create table TYPE_DE_CONTROLE
+  (
+     CODET char(15)  not null  ,
+     LIBELLE char(15)  null  
+     ,
+     constraint PK_TYPE_DE_CONTROLE primary key (CODET)
+  ) 
+go
+
+
+
+/* -----------------------------------------------------------------------------
+      TABLE : CATEGORIE_DE_PRODUIT
+----------------------------------------------------------------------------- */
+
+create table CATEGORIE_DE_PRODUIT
+  (
+     CODE char(15)  not null  ,
+     LIBELLE char(15)  null  
+     ,
+     constraint PK_CATEGORIE_DE_PRODUIT primary key (CODE)
+  ) 
+go
+
+
+
+/* -----------------------------------------------------------------------------
+      TABLE : ZONE_DE_STOCKAGE
+----------------------------------------------------------------------------- */
+
+create table ZONE_DE_STOCKAGE
+  (
+     CODEZ char(15)  not null  ,
+     CODE char(15)  not null  ,
+     NOM char(15)  null  ,
+     BÂTIMENT char(15)  null  ,
+     ETAGE int  null  ,
+     ADRESSE_RUE char(50)  null  ,
+     CP char(5)  null  ,
+     VILLE char(30)  null  
+     ,
+     constraint PK_ZONE_DE_STOCKAGE primary key (CODEZ)
+  ) 
+go
+
+
+
+/*      INDEX DE ZONE_DE_STOCKAGE      */
+
+
+
+/* -----------------------------------------------------------------------------
+      TABLE : CONTROLES
+----------------------------------------------------------------------------- */
+
+create table CONTROLES
+  (
+     CODEC varchar(128)  not null  ,
+     CODEE char(15)  not null  ,
+     CODET char(15)  not null  ,
+     RESUME varchar(128)  null  ,
+     DATE_CONTROLE datetime  null  ,
+     MONTANT_HT real  null  
+     ,
+     constraint PK_CONTROLES primary key (CODEC)
+  ) 
+go
+
+
+
+/*      INDEX DE CONTROLES      */
+
+
+
+/* -----------------------------------------------------------------------------
+      TABLE : HABILITER
+----------------------------------------------------------------------------- */
+
+create table HABILITER
+  (
+     CODET char(15)  not null  ,
+     CODEE char(15)  not null  
+     ,
+     constraint PK_HABILITER primary key (CODET, CODEE)
+  ) 
+go
+
+
+
+/*      INDEX DE HABILITER      */
+
+
+
+/* -----------------------------------------------------------------------------
+      TABLE : SUBIR
+----------------------------------------------------------------------------- */
+
+create table SUBIR
+  (
+     CODEZ char(15)  not null  ,
+     CODEC varchar(128)  not null  ,
+     COMMENTAIRE char(32)  null  
+     ,
+     constraint PK_SUBIR primary key (CODEZ, CODEC)
+  ) 
+go
+
+
+
+/*      INDEX DE SUBIR      */
+
+
+
+/* -----------------------------------------------------------------------------
+      REFERENCES SUR LES TABLES
+----------------------------------------------------------------------------- */
+
+
+
+alter table ZONE_DE_STOCKAGE 
+     add constraint FK_ZONE_DE_STOCKAGE_CATEGORIE_DE_PRODUIT foreign key (CODE) 
+               references CATEGORIE_DE_PRODUIT (CODE)
+go
+
+
+
+
+alter table CONTROLES 
+     add constraint FK_CONTROLES_ENTREPRISE foreign key (CODEE) 
+               references ENTREPRISE (CODEE)
+go
+
+
+
+
+alter table CONTROLES 
+     add constraint FK_CONTROLES_TYPE_DE_CONTROLE foreign key (CODET) 
+               references TYPE_DE_CONTROLE (CODET)
+go
+
+
+
+
+alter table HABILITER 
+     add constraint FK_HABILITER_TYPE_DE_CONTROLE foreign key (CODET) 
+               references TYPE_DE_CONTROLE (CODET)
+go
+
+
+
+
+alter table HABILITER 
+     add constraint FK_HABILITER_ENTREPRISE foreign key (CODEE) 
+               references ENTREPRISE (CODEE)
+go
+
+
+
+
+alter table SUBIR 
+     add constraint FK_SUBIR_ZONE_DE_STOCKAGE foreign key (CODEZ) 
+               references ZONE_DE_STOCKAGE (CODEZ)
+go
+
+
+
+
+alter table SUBIR 
+     add constraint FK_SUBIR_CONTROLES foreign key (CODEC) 
+               references CONTROLES (CODEC)
+go
+
+
+
+
+/*
+ -----------------------------------------------------------------------------
+               FIN DE GENERATION
+ -----------------------------------------------------------------------------
+*/
